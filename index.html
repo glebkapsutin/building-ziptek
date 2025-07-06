@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строительная компания - Монтаж премиум-класса</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.lordicon.com/libs/lordicon-2.0.0/lord-icon-2.0.0.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+        }
+
+            .header.scrolled {
+                background-color: rgba(31, 41, 55, 0.95);
+            }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(30, 64, 175, 0.7), rgba(20, 184, 166, 0.5));
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay {
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #1E3A8A, #14B8A6);
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.5);
+            transition: all 0.3s ease;
+        }
+
+            .cta-button:hover {
+                box-shadow: 0 0 35px rgba(20, 184, 166, 0.7);
+                transform: scale(1.05);
+            }
+
+        .video-control {
+            transition: opacity 0.3s ease;
+        }
+
+            .video-control:hover {
+                opacity: 0.9;
+            }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #14B8A6;
+            width: 0;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            width: 90%;
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #14B8A6;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        .burger-menu {
+            display: none;
+        }
+
+        @menu screen and (max-width: 768px) {
+            .burger-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+                .nav-links.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 60px;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(31, 41, 55, 0.95);
+                    padding: 1rem;
+                }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Header -->
+    <header class="fixed top-4 left-0 z-50 header bg-gray-800 bg-opacity-70 text-white">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">BuildPremium</h1>
+            <nav class="nav-links space-x-6">
+                <a href="#home" class="hover:text-emerald-400 transition">Главная</a>
+                <a href="#achievements" class="hover:text-emerald-400 transition">Достижения</a>
+                <a href="#portfolio" class="hover:text-emerald-400 transition">Портфолио</a>
+                <a href="#services" class="hover:text-emerald-400 transition">Услуги</a>
+                <a href="#testimonials" class="hover:text-emerald-400 transition">Отзывы</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">Контакты</a>
+            </nav>
+            <div class="burger-menu md:hidden cursor-pointer">
+                <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen">
+        <video id="hero-video" class="absolute inset-0 w-full h-full object-cover" autoplay loop muted>
+            <source src="path/to/construction-video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4" data-aos="fade-down">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6"><span id="typed"></span></h1>
+            <a href="#contact" class="mt-6 px-10 py-4 cta-button text-white rounded-xl text-lg animate-pulse">Рассчитать проект</a>
+            <button id="video-control" class="video-control mt-4 px-4 py-2 bg-gray-800 bg-opacity-50 rounded-full text-white hover:bg-opacity-70">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Achievements Section (Timeline) -->
+    <section id="achievements" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-gray-800">Наши достижения</h2>
+            <div class="relative space-y-12">
+                <div class="timeline-item relative" data-aos="fade-right">
+                    <div class="timeline-content md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-800">2010</h3>
+                        <p class="text-gray-600">Основание компании и первый крупный проект.</p>
+                    </div>
+                </div>
+                <div class="timeline-item relative" data-aos="fade-left">
+                    <div class="timeline-content md:w-1/2 md:ml-auto">
+                        <h3 class="text-2xl font-bold text-gray-800">2015</h3>
+                        <p class="text-gray-600">100 завершенных проектов и награда за качество.</p>
+                    </div>
+                </div>
+                <div class="timeline-item relative" data-aos="fade-right">
+                    <div class="timeline-content md:w-1/2">
+                        <h3 class="text-2xl font-bold text-gray-800">2025</h3>
+                        <p class="text-gray-600">Лидер рынка в премиальном монтаже.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">Наши проекты</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="portfolio-item relative overflow-hidden rounded-xl cursor-pointer" data-video="path/to/project1-video.mp4" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/to/project1.jpg" alt="Проект 1" class="w-full h-96 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-0 flex items-center justify-center text-white text-center p-6">
+                        <p class="text-xl font-semibold">Фасад бизнес-центра</p>
+                    </div>
+                </div>
+                <div class="portfolio-item relative overflow-hidden rounded-xl cursor-pointer" data-video="path/to/project2-video.mp4" data-aos="fade-up" data-aos-delay="200">
+                    <img src="path/to/project2.jpg" alt="Проект 2" class="w-full h-96 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-0 flex items-center justify-center text-white text-center p-6">
+                        <p class="text-xl font-semibold">Инженерные системы ТЦ</p>
+                    </div>
+                </div>
+                <div class="portfolio-item relative overflow-hidden rounded-xl cursor-pointer" data-video="path/to/project3-video.mp4" data-aos="fade-up" data-aos-delay="300">
+                    <img src="path/to/project3.jpg" alt="Проект 3" class="w-full h-96 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-0 flex items-center justify-center text-white text-center p-6">
+                        <p class="text-xl font-semibold">Конструкции жилого комплекса</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">Что мы предлагаем</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-50 p-8 rounded-xl text-center transition duration-300" data-tilt data-tilt-max="15" data-aos="fade-up" data-aos-delay="100">
+                    <lord-icon src="https://cdn.lordicon.com/icon1.json" trigger="hover" colors="primary:#14B8A6" style="width:80px;height:80px"></lord-icon>
+                    <h3 class="text-2xl font-bold text-gray-800">Инженерные системы</h3>
+                    <p class="text-gray-600 mt-2">Точные и надежные системы отопления, вентиляции и водоснабжения.</p>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl text-center transition duration-300" data-tilt data-tilt-max="15" data-aos="fade-up" data-aos-delay="200">
+                    <lord-icon src="https://cdn.lordicon.com/icon2.json" trigger="hover" colors="primary:#14B8A6" style="width:80px;height:80px"></lord-icon>
+                    <h3 class="text-2xl font-bold text-gray-800">Фасадные работы</h3>
+                    <p class="text-gray-600 mt-2">Эстетика и долговечность для современных зданий.</p>
+                </div>
+                <div class="service-card bg-gray-50 p-8 rounded-xl text-center transition duration-300" data-tilt data-tilt-max="15" data-aos="fade-up" data-aos-delay="300">
+                    <lord-icon src="https://cdn.lordicon.com/icon3.json" trigger="hover" colors="primary:#14B8A6" style="width:80px;height:80px"></lord-icon>
+                    <h3 class="text-2xl font-bold text-gray-800">Конструкции</h3>
+                    <p class="text-gray-600 mt-2">Сложные конструкции с гарантией качества.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-gray-100" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">Отзывы клиентов</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg text-center">
+                        <img src="path/to/client1.jpg" alt="Клиент 1" class="w-24 h-24 rounded-full mx-auto mb-4">
+                        <p class="text-gray-600">"Работа выполнена на высшем уровне, сроки соблюдены!"</p>
+                        <p class="text-sm text-gray-500 mt-4 font-semibold">Алексей Смирнов</p>
+                    </div>
+                    <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg text-center">
+                        <img src="path/to/client2.jpg" alt="Клиент 2" class="w-24 h-24 rounded-full mx-auto mb-4">
+                        <p class="text-gray-600">"Профессионалы своего дела, рекомендую всем!"</p>
+                        <p class="text-sm text-gray-500 mt-4 font-semibold">Елена Кузнецова</p>
+                    </div>
+                    <div class="swiper-slide bg-white p-8 rounded-xl shadow-lg text-center">
+                        <img src="path/to/client3.jpg" alt="Клиент 3" class="w-24 h-24 rounded-full mx-auto mb-4">
+                        <p class="text-gray-600">"Современный подход и впечатляющий результат."</p>
+                        <p class="text-sm text-gray-500 mt-4 font-semibold">Дмитрий Попов</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">Оставьте заявку</h2>
+            <form class="max-w-lg mx-auto bg-gray-50 p-8 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <label for="name" class="block text-gray-700 font-semibold">Имя</label>
+                    <input type="text" id="name" class="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Ваше имя">
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="block text-gray-700 font-semibold">Email</label>
+                    <input type="email" id="email" class="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Ваш email">
+                </div>
+                <div class="mb-6">
+                    <label for="phone" class="block text-gray-700 font-semibold">Телефон</label>
+                    <input type="tel" id="phone" class="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Ваш телефон">
+                </div>
+                <div class="mb-6">
+                    <label for="message" class="block text-gray-700 font-semibold">Сообщение</label>
+                    <textarea id="message" class="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600" rows="5" placeholder="Ваше сообщение"></textarea>
+                </div>
+                <button type="submit" class="w-full px-6 py-4 cta-button text-white rounded-xl text-lg">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modal for Portfolio Video -->
+    <div id="portfolio-modal" class="modal">
+        <div class="modal-content">
+            <video id="modal-video" controls class="w-full">
+                <source src="" type="video/mp4">
+            </video>
+            <button id="close-modal" class="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Typed.js for Hero Text
+        new Typed('#typed', {
+            strings: ['Монтаж премиум-класса', 'Фасады будущего', 'Инженерные системы нового уровня'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Video Control
+        const video = document.getElementById('hero-video');
+        const videoControl = document.getElementById('video-control');
+        videoControl.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                videoControl.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                videoControl.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Burger Menu
+        const burger = document.querySelector('.burger-menu');
+        const navLinks = document.querySelector('.nav-links');
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Portfolio Modal
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modal = document.getElementById('portfolio-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const closeModal = document.getElementById('close-modal');
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                modalVideo.querySelector('source').setAttribute('src', videoSrc);
+                modalVideo.load();
+                modal.style.display = 'flex';
+            });
+        });
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalVideo.pause();
+        });
+
+        // Initialize Swiper
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Tilt.js for Service Cards
+        VanillaTilt.init(document.querySelectorAll('.service-card'), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            'max-glare': 0.3
+        });
+    </script>
+</body>
+</html>
