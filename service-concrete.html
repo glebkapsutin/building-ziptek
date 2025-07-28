@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Монтаж железобетонных конструкций — ЗИПТЭК ГРУПП</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+    body {
+        background: linear-gradient(120deg, #181818 0%, #23243a 100%);
+    }
+    .service-detail-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background: linear-gradient(120deg, rgba(255,193,7,0.18) 0%, rgba(40,30,10,0.18) 100%);
+        backdrop-filter: blur(14px);
+        opacity: 0.97;
+        pointer-events: none;
+    }
+    .service-detail-card {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        margin: 3rem auto 2rem auto;
+        background: rgba(30,24,18,0.96);
+        border-radius: 22px;
+        box-shadow: 0 8px 48px 0 rgba(255,193,7,0.10);
+        padding: 2.5rem 2.5rem 2rem 2.5rem;
+        animation: fadeInUp 0.8s cubic-bezier(.4,1.6,.6,1);
+        overflow: hidden;
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .service-detail-title {
+        font-family: var(--font-2);
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #ffd600;
+        margin-bottom: 0.7rem;
+        letter-spacing: 0.01em;
+        position: relative;
+        text-shadow: 0 2px 8px rgba(255,193,7,0.10);
+    }
+    .service-detail-divider {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+        border-radius: 2px;
+        margin-bottom: 2rem;
+        opacity: 0.85;
+        transition: width 0.5s cubic-bezier(.4,1.6,.6,1);
+        box-shadow: 0 1px 8px 0 rgba(255,193,7,0.18);
+    }
+    .service-detail-card:hover .service-detail-divider {
+        width: 100%;
+        opacity: 1;
+        background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+    }
+    .service-detail-desc {
+        color: #ffe082;
+        font-size: 1.18em;
+        margin-bottom: 2.2rem;
+        line-height: 1.7;
+    }
+    .service-detail-list {
+        margin-bottom: 2.2rem;
+        padding-left: 1.2em;
+    }
+    .service-detail-list li {
+        color: #fffde7;
+        margin-bottom: 0.7em;
+        position: relative;
+        padding-left: 1.2em;
+    }
+    .service-detail-list li::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0.7em;
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: #ffd600;
+        box-shadow: 0 0 0 2px #ffb300;
+    }
+    .service-detail-back {
+        display: inline-block;
+        margin-top: 1.5rem;
+        border-radius: 8px;
+        font-size: 1.1em;
+        padding: 0.7em 2.2em;
+        border: 2px solid #fffde7;
+        color: #fffde7;
+        background: transparent;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        box-shadow: 0 2px 12px 0 rgba(255,193,7,0.08);
+    }
+    .service-detail-back:hover {
+        background: #ffd60022;
+        color: #181818;
+        border-color: #ffd600;
+    }
+    @media (max-width: 900px) {
+        .service-detail-card {
+            padding: 1.5rem 1rem 1.2rem 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="service-detail-bg"></div>
+    <div id="page" class="s-pagewrap">
+        <header class="s-header">
+            <!-- ... меню ... -->
+        </header>
+        <section class="s-content">
+            <div class="service-detail-card">
+                <div class="service-detail-title">Монтаж железобетонных конструкций</div>
+                <div class="service-detail-divider"></div>
+                <div class="service-detail-desc">
+                    Одно из направлений деятельности компании «ЗИПТЭК ГРУПП» – проведение работ по монтажу сборных железобетонных конструкций для строительства различных объектов. Применение сборных железобетонных элементов сокращает сроки строительства, его трудоемкость и стоимость, облегчает круглогодичное ведение строительных работ. В то же время такие конструкции характеризуются массивностью и тяжелым весом, поэтому для их качественного монтажа требуется спецтехника и профессиональная команда специалистов, каждый из которых обладают соответствующими знаниями и опытом. Всем этим в полной мере располагает компания «ЗИПТЭК ГРУПП», предлагающая полный комплекс работ по монтажу сборных железобетонных конструкций непосредственно на строительной площадке.
+                </div>
+                <a href="index.html#services" class="service-detail-back">← Назад к услугам</a>
+            </div>
+        </section>
+        <footer class="s-footer">
+            <!-- ... футер ... -->
+        </footer>
+    </div>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
