@@ -4645,3 +4645,60 @@ img.u-pull-left {
     opacity: 0.18;
     z-index: 1;
 }
+
+
+ .s-why-choose-us {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .s-why-choose-us__title { 
+            margin-bottom: 40px;
+            color: #000;
+        }
+
+        .s-why-choose-us__content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .why-choose-us__item {
+            flex: 1;
+            min-width: 280px;
+            max-width: 360px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #282525;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          
+        }
+
+        .why-choose-us__item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-us__item-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .why-choose-us__item-desc {
+            font-size: 1.7rem;
+            line-height: 1.6;
+            color: #b4b4b4;
+        }
+
+        /* Адаптивность для маленьких экранов */
+        @media (max-width: 767px) {
+            .why-choose-us__item {
+                max-width: 100%;
+            }
+        }
