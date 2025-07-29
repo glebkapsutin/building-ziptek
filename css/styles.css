@@ -4702,3 +4702,11 @@ img.u-pull-left {
                 max-width: 100%;
             }
         }
+        .text_h2_obsluga {
+            content: "";
+            display: block;
+            background-color: var(--color-text-light);
+            width: 2px;
+            height: var(--vspace-3_5);
+           
+        }
