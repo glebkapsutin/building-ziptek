@@ -3576,6 +3576,7 @@ img.u-pull-left {
 
 .service-item {
     margin-bottom: var(--vspace-0_5);
+ 
 }
 
 .service-item h3 {
@@ -4218,6 +4219,9 @@ img.u-pull-left {
     .s-contact .text-display-title {
         font-size: var(--text-xl);
     }
+    .service-premium {
+        height: 380px;
+    }
 }
 
 
@@ -4460,7 +4464,7 @@ img.u-pull-left {
     position: relative;
     overflow: hidden;
     border-radius: 18px;
-    min-height: 320px;
+    min-height: 380px;
     margin-bottom: var(--vspace-1_5);
     box-shadow: 0 4px 32px 0 rgba(7, 97, 125, 0.10), 0 1.5px 8px 0 rgba(37, 37, 37, 0.04);
     background: transparent;
@@ -4854,7 +4858,7 @@ img.u-pull-left {
   .obsluga-desc { font-size: 1.35rem; margin-bottom: 28px; }
   .obsluga-video-wrap { max-width: 100%; margin-bottom: 24px; min-height: 320px; }
   .obsluga-video { min-height: 320px; max-height: 240px; }
-  .obsluga-more-btn { font-size: 1.1rem; padding: 16px 24px; }
+  .obsluga-more-btn { font-size: 1.1rem; }
 }
 @media (max-width: 500px) {
   .s-obsluga-minimal { padding: 70px 0 48px 0; }
@@ -4893,4 +4897,4 @@ img.u-pull-left {
     padding: 0 0.5rem 2.5rem 0.5rem;
   }
 }
-       
+
