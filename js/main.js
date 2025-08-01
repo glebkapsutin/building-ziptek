@@ -8,6 +8,23 @@
 
     'use strict';
 
+    // Проверяем загрузку необходимых библиотек
+    const checkLibraries = function() {
+        const required = {
+            'PhotoSwipe': typeof PhotoSwipe !== 'undefined',
+            'PhotoSwipeUI_Default': typeof PhotoSwipeUI_Default !== 'undefined',
+            'MoveTo': typeof MoveTo !== 'undefined',
+            'anime': typeof anime !== 'undefined'
+        };
+        
+        const missing = Object.keys(required).filter(key => !required[key]);
+        if (missing.length > 0) {
+            console.warn('Missing required libraries:', missing);
+        }
+        
+        return missing.length === 0;
+    };
+
     const cfg = {
         
         // MailChimp URL
@@ -253,22 +270,38 @@
     * ----------------------------------------------------- */
     const ssPhotoswipe = function() {
 
+        // Проверяем наличие необходимых библиотек
+        if (!checkLibraries() || typeof PhotoSwipe === 'undefined' || typeof PhotoSwipeUI_Default === 'undefined') {
+            console.warn('PhotoSwipe libraries not available');
+            return;
+        }
+
         const items = [];
         const pswp = document.querySelectorAll('.pswp')[0];
         const folioItems = document.querySelectorAll('.folio-item');
 
         if (!(pswp && folioItems)) return;
 
-        folioItems.forEach(function(folioItem) {
+        // Ограничиваем количество элементов для лучшей производительности
+        const maxItems = 20; // Увеличиваем лимит
+        const itemsToProcess = folioItems.length > maxItems ? 
+            Array.from(folioItems).slice(0, maxItems) : 
+            Array.from(folioItems);
+
+        itemsToProcess.forEach(function(folioItem) {
 
             let folio = folioItem;
             let thumbLink = folio.querySelector('.folio-item__thumb-link');
             let title = folio.querySelector('.folio-item__title');
             let caption = folio.querySelector('.folio-item__caption');
+            
+            // Проверяем наличие необходимых элементов
+            if (!thumbLink || !title) return;
+            
             let titleText = '<h4>' + title.innerHTML + '</h4>';
-            let captionText = caption.innerHTML;
+            let captionText = caption ? caption.innerHTML : '';
             let href = thumbLink.getAttribute('href');
-            let size = thumbLink.dataset.size.split('x'); 
+            let size = thumbLink.dataset.size ? thumbLink.dataset.size.split('x') : ['1050', '700']; 
             let width  = size[0];
             let height = size[1];
 
@@ -286,31 +319,54 @@
 
         });
 
+        // Проверяем, что у нас есть элементы для обработки
+        if (items.length === 0) return;
+
         // bind click event
-        folioItems.forEach(function(folioItem, i) {
+        itemsToProcess.forEach(function(folioItem, i) {
 
             let thumbLink = folioItem.querySelector('.folio-item__thumb-link');
+            
+            if (!thumbLink) return;
 
-            thumbLink.addEventListener('click', function(event) {
-
+            // Удаляем старые обработчики событий, если они есть
+            thumbLink.removeEventListener('click', thumbLink._pswpClickHandler);
+            
+            // Создаем новый обработчик
+            thumbLink._pswpClickHandler = function(event) {
                 event.preventDefault();
+                event.stopPropagation();
 
                 let options = {
                     index: i,
-                    showHideOpacity: true
+                    showHideOpacity: true,
+                    // Добавляем дополнительные опции для лучшей производительности
+                    maxSpreadZoom: 1.5,
+                    getThumbBoundsFn: function(index) {
+                        let thumbnail = itemsToProcess[index].querySelector('.folio-item__thumb-link');
+                        let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+                        let rect = thumbnail.getBoundingClientRect();
+                        return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                    }
                 }
 
                 // initialize PhotoSwipe
-                let lightBox = new PhotoSwipe(pswp, PhotoSwipeUI_Default, items, options);
-                lightBox.init();
-            });
+                try {
+                    let lightBox = new PhotoSwipe(pswp, PhotoSwipeUI_Default, items, options);
+                    lightBox.init();
+                } catch (error) {
+                    console.warn('Error initializing PhotoSwipe:', error);
+                }
+            };
+
+            thumbLink.addEventListener('click', thumbLink._pswpClickHandler);
 
         });
 
     };  // end ssPhotoSwipe
 
 
-   /* mailchimp form
+    /* mailchimp form
     * ---------------------------------------------------- */ 
     const ssMailChimpForm = function() {
 
@@ -334,11 +390,11 @@
             if (validity.valid) return;
 
             // If field is required and empty
-            if (validity.valueMissing) return 'Please enter an email address.';
+            if (validity.valueMissing) return 'Пожалуйста, введите email адрес.';
 
             // If not the right type
             if (validity.typeMismatch) {
-                if (field.type === 'email') return 'Please enter a valid email address.';
+                if (field.type === 'email') return 'Пожалуйста, введите корректный email адрес.';
             }
 
             // If pattern doesn't match
@@ -348,11 +404,11 @@
                 if (field.hasAttribute('title')) return field.getAttribute('title');
 
                 // Otherwise, generic error
-                return 'Please match the requested format.';
+                return 'Пожалуйста, введите корректный формат.';
             }
 
             // If all else fails, return a generic catchall error
-            return 'The value you entered for this field is invalid.';
+            return 'Введенное значение некорректно.';
 
         };
 
@@ -372,56 +428,33 @@
 
         };
 
-        // Display form status (callback function for JSONP)
-        window.displayMailChimpStatus = function (data) {
-
-            // Make sure the data is in the right format and that there's a status container
-            if (!data.result || !data.msg || !mcStatus ) return;
-
-            // Update our status message
-            mcStatus.innerHTML = data.msg;
-
-            // If error, add error class
-            if (data.result === 'error') {
-                mcStatus.classList.remove('success-message');
-                mcStatus.classList.add('error-message');
-                return;
-            }
-
-            // Otherwise, add success class
-            mcStatus.classList.remove('error-message');
-            mcStatus.classList.add('success-message');
+        // Show success message
+        function showSuccess(form, message) {
+            let successMessage = form.querySelector('.mc-status');
+            successMessage.classList.remove('error-message');
+            successMessage.classList.add('success-message');
+            successMessage.innerHTML = message;
         };
 
         // Submit the form 
-        function submitMailChimpForm(form) {
+        function submitForm(form) {
 
-            let url = cfg.mailChimpURL;
             let emailField = form.querySelector('#mce-EMAIL');
-            let serialize = '&' + encodeURIComponent(emailField.name) + '=' + encodeURIComponent(emailField.value);
+            let email = emailField.value;
 
-            if (url == '') return;
+            // Create mailto link
+            let subject = encodeURIComponent('Подписка на новости ЗИПТЭК ГРУПП');
+            let body = encodeURIComponent(`Здравствуйте!\n\nЯ хочу подписаться на новости компании ЗИПТЭК ГРУПП.\n\nМой email: ${email}\n\nС уважением,\n${email}`);
+            let mailtoLink = `mailto:info@ziptekgroup.ru?subject=${subject}&body=${body}`;
 
-            url = url.replace('/post?u=', '/post-json?u=');
-            url += serialize + '&c=displayMailChimpStatus';
+            // Open email client
+            window.open(mailtoLink, '_blank');
 
-            // Create script with url and callback (if specified)
-            var ref = window.document.getElementsByTagName( 'script' )[ 0 ];
-            var script = window.document.createElement( 'script' );
-            script.src = url;
+            // Show success message
+            showSuccess(form, 'Спасибо! Откройте вашу почтовую программу для завершения подписки.');
 
-            // Create global variable for the status container
-            window.mcStatus = form.querySelector('.mc-status');
-            window.mcStatus.classList.remove('error-message', 'success-message')
-            window.mcStatus.innerText = 'Submitting...';
-
-            // Insert script tag into the DOM
-            ref.parentNode.insertBefore( script, ref );
-
-            // After the script is loaded (and executed), remove it
-            script.onload = function () {
-                this.remove();
-            };
+            // Clear the form
+            emailField.value = '';
 
         };
 
@@ -439,7 +472,7 @@
                 return;
             }
 
-            submitMailChimpForm(this);
+            submitForm(this);
 
         }, false);
 
@@ -497,6 +530,12 @@
     * ------------------------------------------------------ */
     const ssMoveTo = function() {
 
+        // Проверяем наличие необходимых библиотек
+        if (!checkLibraries() || typeof MoveTo === 'undefined') {
+            console.warn('MoveTo library not available');
+            return;
+        }
+
         const siteBody    = document.querySelector('body');
 
         const easeFunctions = {
@@ -524,6 +563,9 @@
 
         const triggers = document.querySelectorAll('.smoothscroll');
         
+        // Проверяем, что у нас есть триггеры и библиотека MoveTo доступна
+        if (!triggers.length || typeof MoveTo === 'undefined') return;
+        
         const moveTo = new MoveTo({
             tolerance: 0,
             duration: 1200,
@@ -536,8 +578,18 @@
             }
         }, easeFunctions);
 
-        triggers.forEach(function(trigger) {
-            moveTo.registerTrigger(trigger);
+        // Ограничиваем количество триггеров для лучшей производительности
+        const maxTriggers = 50;
+        const triggersToProcess = triggers.length > maxTriggers ? 
+            Array.from(triggers).slice(0, maxTriggers) : 
+            Array.from(triggers);
+
+        triggersToProcess.forEach(function(trigger) {
+            try {
+                moveTo.registerTrigger(trigger);
+            } catch (error) {
+                console.warn('Error registering smoothscroll trigger:', error);
+            }
         });
 
     }; // end ssMoveTo
@@ -554,11 +606,16 @@
         ssOffCanvas();
         ssMasonry();
         ssSwiper();
-        ssPhotoswipe();
+        
+        // Добавляем задержку для PhotoSwipe и MoveTo для лучшей производительности
+        setTimeout(function() {
+            ssPhotoswipe();
+            ssMoveTo();
+        }, 100);
+        
         ssMailChimpForm();
         ssAlertBoxes();
         ssBackToTop();
-        ssMoveTo();
 
     })();
 
