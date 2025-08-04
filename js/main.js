@@ -623,3 +623,22 @@
 
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    function updateYear() {
+        const copyrightElement = document.querySelector('.ss-copyright span');
+        if (copyrightElement) {
+            const currentYear = new Date().getFullYear();
+            copyrightElement.textContent = `${currentYear}г. ©Ziptec все права защищены`;
+        }
+    }
+
+    // Обновляем год при загрузке страницы
+    updateYear();
+
+    // Проверяем каждый день, не наступил ли новый год
+    setInterval(function() {
+        updateYear();
+    }, 24 * 60 * 60 * 1000); // Проверка раз в день
+});
+
