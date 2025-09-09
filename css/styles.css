@@ -2911,7 +2911,7 @@ img.u-pull-left {
 }
 
 .s-header__menu-toggle.opaque {
-    background-color: var(--color-1);
+    background-color: rgb(72,155,44);
 }
 
 .s-header__menu-text {
@@ -3296,7 +3296,7 @@ img.u-pull-left {
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: .3em;
-    color: var(--color-1);
+    color: rgb(72,155,44);
     margin-right: 1.6rem;
 }
 
@@ -3306,7 +3306,7 @@ img.u-pull-left {
 }
 
 .s-intro__scroll svg path {
-    fill: var(--color-1);
+    fill: #489b2c;
 }
 
 /* ------------------------------------------------------------------- 
