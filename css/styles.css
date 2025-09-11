@@ -3207,7 +3207,7 @@ img.u-pull-left {
 .s-intro__title {
     --text-title-size: 7.4rem;
     --text-multiplier: 1;
-    font-weight: 700;
+    font-weight: 400;
     font-size: calc(var(--text-title-size) * var(--text-multiplier));
     line-height: 1.1154;
     color: white;
