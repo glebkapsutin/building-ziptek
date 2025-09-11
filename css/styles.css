@@ -79,15 +79,15 @@
 /* ------------------------------------------------------------------- 
  * ## fonts 
  * ------------------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@font-face {
+    font-family: 'Days_Regular';
+    src: url('../fonts/Days_Regular.ttf') format('truetype');
+}
 
 :root {
-    --font-1: "Lora", serif;
-    --font-2: "Inter", sans-serif;
-
-    /* monospace
-    */
-    --font-mono: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+    --font-1: "Days_Regular", sans-serif;
+    --font-2: "Days_Regular", sans-serif;
+    --font-mono: "Days_Regular";
 }
 
 /* ------------------------------------------------------------------- 
@@ -4296,7 +4296,7 @@ img.u-pull-left {
     height: calc(1.875 * var(--space));
     width: calc(1.875 * var(--space));
     border-radius: 50%;
-    background-color: var(--color-1);
+    background-color: rgb(72,155,44);
     transition: all .3s;
     position: relative;
 }
