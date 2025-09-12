@@ -94,9 +94,11 @@
     /* parallax
     * -------------------------------------------------- */
     const ssParallax = function() { 
-
-        const rellax = new Rellax('.rellax');
-
+        try {
+            const rellax = new Rellax('.rellax', { speed: -2 });
+        } catch(e) {
+            // fail silently if library missing
+        }
     }; // end ssParallax
 
 
@@ -186,7 +188,16 @@
         const blocks = document.querySelectorAll('[data-animate-block]');
         if (!blocks) return;
 
-        window.addEventListener('scroll', animateOnScroll);
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    animateOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
 
         function animateOnScroll() {
 
@@ -207,8 +218,8 @@
                         targets: current.querySelectorAll('[data-animate-el]'),
                         opacity: [0, 1],
                         translateY: [100, 0],
-                        delay: anime.stagger(200, {start: 200}),
-                        duration: 800,
+                        delay: anime.stagger(120, {start: 120}),
+                        duration: 500,
                         easing: 'easeInOutCubic',
                         begin: function(anim) {
                             current.classList.add('ss-animated');

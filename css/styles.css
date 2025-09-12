@@ -3215,7 +3215,7 @@ img.u-pull-left {
     height: 100%;
     background: #000000;
     pointer-events: none;
-    opacity: .7
+    opacity: .28
 }
 
 .s-intro__bg::after {
@@ -3230,7 +3230,7 @@ img.u-pull-left {
     height: 100%;
     background: linear-gradient(0deg, black 15%, rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
-    opacity: .1;
+    opacity: .03;
 }
 
 /* --------------------------------------------------------------------
@@ -4521,6 +4521,7 @@ img.u-pull-left {
     box-shadow: 0 4px 32px 0 rgba(7, 97, 125, 0.10), 0 1.5px 8px 0 rgba(37, 37, 37, 0.04);
     background: transparent;
     transition: box-shadow 0.35s, transform 0.35s;
+    will-change: transform;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -4532,9 +4533,8 @@ img.u-pull-left {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(120deg, rgba(249, 168, 40, 0.10) 0%, rgba(7, 97, 125, 0.10) 100%);
-    backdrop-filter: blur(8px);
-    opacity: 0.95;
+    background: linear-gradient(120deg, rgba(249, 168, 40, 0.06) 0%, rgba(7, 97, 125, 0.06) 100%);
+    opacity: 0.9;
     pointer-events: none;
 }
 
@@ -4556,12 +4556,10 @@ img.u-pull-left {
     width: 40px;
     height: 40px;
     display: block;
-    transition: transform 0.3s;
+    transition: none;
 }
 
-.service-premium:hover .service-icon svg {
-    transform: scale(1.12) rotate(-4deg);
-}
+.service-premium:hover .service-icon svg { }
 
 .service-content {
     z-index: 2;
@@ -4611,19 +4609,15 @@ img.u-pull-left {
     border-radius: 2px;
     margin: 0 0 1.2rem 0;
     opacity: 0.5;
-    transition: width 0.35s cubic-bezier(.4, 1.6, .6, 1), opacity 0.25s, background 0.25s;
+    transition: opacity 0.25s, background 0.25s;
 }
 
-.service-premium:hover .service-divider {
-    width: 100%;
-    opacity: 1;
-    background: linear-gradient(90deg, var(--color-2-light) 0%, var(--color-1-light) 100%);
-}
+.service-premium:hover .service-divider { opacity: 1; }
 
 .btn--accent {
     border-color: #fff;
     color: #eaeaea;
-    background: rgba(249, 168, 40, 0.08);
+    background: rgba(249, 168, 40, 0.06);
     font-weight: 600;
     letter-spacing: 0.08em;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -4637,8 +4631,7 @@ img.u-pull-left {
 }
 
 .service-premium:hover {
-    box-shadow: 0 12px 48px 0 rgba(249, 168, 40, 0.18), 0 2px 16px 0 rgba(7, 97, 125, 0.10);
-    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 6px 24px 0 rgba(249, 168, 40, 0.16);
 }
 
 @media (max-width: 900px) {
@@ -4744,7 +4737,8 @@ img.u-pull-left {
             background: none;
             box-shadow: none;
             padding: 0 0 0 0;
-            transition: border-color 0.3s;
+            transition: border-color 0.25s ease;
+            will-change: border-color;
             min-height: 120px;
         }
 
