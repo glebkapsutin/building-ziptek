@@ -47,11 +47,7 @@
         ================================================== -->
         <header class="s-header">
 
-            <!-- <div class="s-header__logo">
-                <a class="logo">
-                    <img src="images/logo.png" alt="Homepage">
-                </a>
-            </div> -->
+            
 
             <a class="s-header__menu-toggle" href="#0" class="">
                 <span class="s-header__menu-text">Меню</span>
@@ -61,7 +57,10 @@
             <nav class="s-header__nav">
 
                 <a href="#0" class="s-header__nav-close-btn" title="Закрыть"><span>Закрыть</span></a>
-                <h3>Ziptec</h3>
+                <h3 style="display:none;">Ziptec</h3>
+                <div class="nav-logo" style="margin: 10px 0 20px 0;">
+                    <img src="images/logo.svg" alt="Ziptec" style="height:48px; width:auto;" />
+                </div>
 
                 <ul class="s-header__nav-list">
                     <li><a href="#intro" class="smoothscroll">Монтаж</a></li>
@@ -104,20 +103,17 @@
                 <div class="row s-intro__content">
 
                     <div class="column lg-12 s-intro__content-inner">
-                        <center>
-                            <div style="width: 400px;   border-radius: 30px; background-color: #ffffff74;">
-                                <img src="images/logo.svg"  style="margin:10px"   width="300" alt="Homepage" />
-                            </div>
-                        </center>
-                        <h1 class="s-intro__title">
+                        <div class="hero-panel">
+                            <img src="images/logo.svg" class="hero-panel__logo" alt="Ziptec" />
+                            <h1 class="s-intro__title hero-panel__title">
                             Мы строим ваш бизнес <br>
                             превосходя ожидания
                         </h1>
-
-                        <div class="s-intro__more">
+                            <div class="s-intro__more hero-panel__actions">
                             <a class="smoothscroll btn btn--stroke s-intro__more-btn" href="#contact">
                                 Связаться с нами
                             </a>
+                            </div>
                         </div>
                     </div> <!-- s-intro__content-inner -->
 
@@ -125,17 +121,7 @@
 
 
 
-                <div class="s-intro__scroll">
-                    <a href="#about" class="smoothscroll">
-                        <span>Листай ниже</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            style="color: rgb(72,155,44);transform: rotate(180deg);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);">
-                            <path
-                                d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z">
-                            </path>
-                        </svg>
-                    </a>
-                </div> <!-- s-intro__scroll -->
+                
 
             </section> <!-- end s-intro -->
 
@@ -190,25 +176,15 @@
             ----------------------------------------------- -->
             <section id="services" class="s-services">
                 <div class="s-services__bg"></div>
-                <div class="row narrow section-header section-header--dark has-bottom-sep">
+                <div class="row narrow section-header section-header--dark has-bottom-sep" style="margin:0 auto; max-width:1200px;">
                     <div class="column lg-12">
                         <h1 class="text-display-title">Наши Услуги</h1>
                     </div>
                 </div>
                 <div class="s-services__content">
-                    <div class="row services-list block-lg-one-half block-tab-whole" data-animate-block>
+                    <div class="services-list" data-animate-block>
                         <div class="column service-item service-premium" data-animate-el>
                             <div class="service-card-bg"></div>
-                            <div class="service-icon service-icon--premium">
-                                <!-- SVG иконка: линейный кран -->
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="6" y="30" width="28" height="4" rx="2" fill="#F9A828" />
-                                    <rect x="10" y="10" width="20" height="4" rx="2" fill="#07617D" />
-                                    <rect x="18" y="14" width="4" height="16" rx="2" fill="#07617D" />
-                                    <rect x="24" y="14" width="4" height="10" rx="2" fill="#F9A828" />
-                                </svg>
-                            </div>
                             <div class="service-content">
                                 <h3 class="h4 service-title">Генеральный подряд</h3>
                                 <div class="service-divider"></div>
@@ -220,15 +196,6 @@
 
                         <div class="column service-item service-premium" data-animate-el>
                             <div class="service-card-bg"></div>
-                            <div class="service-icon service-icon--premium">
-                                <!-- SVG иконка: бетонная балка -->
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="8" y="28" width="24" height="6" rx="3" fill="#afb2b1" />
-                                    <rect x="12" y="12" width="16" height="12" rx="3" fill="#07617D" />
-                                    <rect x="16" y="16" width="8" height="4" rx="2" fill="#F9A828" />
-                                </svg>
-                            </div>
                             <div class="service-content">
                                 <h3 class="h4 service-title">Монтаж железобетонных конструкций</h3>
                                 <div class="service-divider"></div>
@@ -238,14 +205,6 @@
                         </div>
                         <div class="column service-item service-premium" data-animate-el>
                             <div class="service-card-bg"></div>
-                            <div class="service-icon service-icon--premium">
-                                <!-- SVG иконка: металлическая балка -->
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="10" y="28" width="20" height="4" rx="2" fill="#F9A828" />
-                                    <rect x="16" y="8" width="8" height="20" rx="4" fill="#07617D" />
-                                </svg>
-                            </div>
                             <div class="service-content">
                                 <h3 class="h4 service-title">Монтаж металлоконструкций</h3>
                                 <div class="service-divider"></div>
@@ -256,14 +215,6 @@
                         </div>
                         <div class="column service-item service-premium" data-animate-el>
                             <div class="service-card-bg"></div>
-                            <div class="service-icon service-icon--premium">
-                                <!-- SVG иконка: кровля -->
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="8,28 20,12 32,28" fill="#F9A828" />
-                                    <rect x="14" y="28" width="12" height="4" rx="2" fill="#07617D" />
-                                </svg>
-                            </div>
                             <div class="service-content">
                                 <h3 class="h4 service-title">Монтаж кровельных систем</h3>
                                 <div class="service-divider"></div>
@@ -274,14 +225,6 @@
                         </div>
                         <div class="column service-item service-premium" data-animate-el>
                             <div class="service-card-bg"></div>
-                            <div class="service-icon service-icon--premium">
-                                <!-- SVG иконка: фасад -->
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="10" y="10" width="20" height="20" rx="4" fill="#07617D" />
-                                    <rect x="14" y="14" width="12" height="12" rx="2" fill="#F9A828" />
-                                </svg>
-                            </div>
                             <div class="service-content">
                                 <h3 class="h4 service-title">Монтаж фасадных систем и сэндвич-панелей</h3>
                                 <div class="service-divider"></div>
@@ -405,143 +348,59 @@
 
                     <div class="row narrow section-header section-header--dark has-bottom-sep">
                         <div class="column lg-12">
-
-
                             <h1 class="text-display-title">Наши проекты</h1>
+                            <p class="lead">Посмотрите примеры работ. Перейдите на страницу проектов для деталей.</p>
+                        </div>
+                    </div>
 
-                            <p class="lead">
-                                Наша компания Ziptec ценит достижения, которые отражают нашу страсть к качеству и
-                                инновациям. Каждый проект — это история успеха, созданная благодаря профессионализму
-                                нашей команды и доверию клиентов.
-                            </p>
-
-                        </div> <!-- end column -->
-                    </div> <!-- end section header -->
-
-                </div> <!-- end s-portfolio__header -->
+                </div>
 
                 <div class="row s-portfolio__content" data-animate-block>
                     <div class="column lg-12">
-                        <div class="folio-list bricks">
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio.jpg" title="Shutterbug"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio.jpg" alt="Shutterbug">
-                                    </a>
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">---</div>
-                                    <h4 class="folio-item__title">---</h4>
-                                </div>
-
+                        <div class="home-portfolio-wrap" data-animate-el>
+                            <button class="home-portfolio-arrow left" aria-label="Назад" type="button">‹</button>
+                            <div class="home-portfolio-scroller" id="homePortfolio">
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio.jpg" alt="Проект 1">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (2).jpeg" alt="Проект 2">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (3).jpeg" alt="Проект 3">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (4).jpg" alt="Проект 4">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (5).jpg" alt="Проект 5">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (6).jpg" alt="Проект 6">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (7).jpg" alt="Проект 7">
+                            </a>
+                            <a class="home-portfolio-card" href="projects.html">
+                                <img src="images/ziptec-images/portfolio/portfolio (8).jpg" alt="Проект 8">
+                            </a>
                             </div>
-
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio (2).jpeg" title="Architecture"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio (2).jpeg" alt="Architecture">
-                                    </a>
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">Монтаж очистных сооружений, г. Ростов-на-Дону</div>
-                                    <h4 class="folio-item__title">Монтаж очистных сооружений</h4>
-                                </div>
-
-                            </div>
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio (3).jpeg" title="Minimalismo"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio (3).jpeg" alt="Minimalismo">
-                                    </a>
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">Монтаж металлоконструкций - межэтажных перекрытий в
-                                        производственном цеху, г Павловский Посад, Московская область</div>
-                                    <h4 class="folio-item__title">Монтаж металлоконструкций</h4>
-                                </div>
-
-                            </div>
-
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio (5).jpg" title="Portfolio 5"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio (5).jpg" alt="Portfolio 5">
-                                    </a>
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">---</div>
-                                    <h4 class="folio-item__title">---</h4>
-                                </div>
-
-
-                            </div>
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio (6).jpg" title="Portfolio 6"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio (6).jpg" alt="Portfolio 6">
-                                    </a>
-
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">---</div>
-                                    <h4 class="folio-item__title">---</h4>
-                                </div>
-
-                            </div>
-                            <div class="brick folio-item" data-animate-el>
-                                <div class="folio-item__thumb">
-                                    <a class="folio-item__thumb-link"
-                                        href="images/ziptec-images/portfolio/portfolio (7).jpg" title="Portfolio 7"
-                                        data-size="1050x700">
-                                        <img src="images/ziptec-images/portfolio/portfolio (7).jpg" alt="Portfolio 7">
-                                    </a>
-                                </div>
-                                <div class="folio-item__info">
-                                    <div class="folio-item__cat">Прокладка наружных сетей канализационной системы с
-                                        использованием технологи ГНБ В МОСКОВСКОЙ ОБЛАСТИ</div>
-                                    <h4 class="folio-item__title">Прокладка наружных сетей канализационной системы</h4>
-                                </div>
-
-                            </div>
-                            <div class="brick folio-item" data-animate-el>
-                                <div style="margin-top:105px;margin-left:64px;">
-                                    <a id="loadMoreBtn" href="projects.html" class="btn btn--stroke">Смотреть еще</a>
-                                </div>
-
+                            <button class="home-portfolio-arrow right" aria-label="Вперед" type="button">›</button>
                             </div>
                         </div>
-
-
+                        <div class="home-portfolio-actions">
+                            <a id="loadMoreBtn" href="projects.html" class="btn btn--stroke btn--accent">Смотреть еще</a>
+                        </div>
                     </div>
                 </div>
                 <section id="obsluga" class="s-obsluga-minimal">
-                    <div class="obsluga-inner" style="margin-top:50px;">
-                        <h2 class="obsluga-title">Обслуживание</h2>
-                        <div class="obsluga-arrow">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 5v14M19 12l-7 7-7-7" />
-                            </svg>
-                        </div>
-                        <div class="obsluga-desc" style="margin:0 10px;">
-                            Профессиональное техническое обслуживание с гарантией качества и индивидуальным подходом.
-                        </div>
-                        <div class="obsluga-video-wrap" style="margin:40px;">
-                            <video src="images/ziptec-images/VID-20250720-WA0038.mp4" class="obsluga-video" controls
-                                style="border-radius: 24px;"></video>
-                        </div>
-                        <a href="#" class="btn btn--stroke obsluga-more-btn">Узнать подробнее</a>
-                    </div>
+                    <a class="obsluga-strip" href="https://inclean.tech" target="_blank" rel="noopener">
+                        <span class="obsluga-strip__logo">
+                            <img src="images/LogoIncl.svg" alt="INCLEAN" />
+                        </span>
+                        <span class="obsluga-strip__text">Обслуживание зданий и сооружений</span>
+                        <span class="obsluga-strip__arrow" aria-hidden="true">→</span>
+                    </a>
                 </section>
 
 
