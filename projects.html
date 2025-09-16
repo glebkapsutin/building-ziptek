@@ -85,77 +85,42 @@
         }
 
         .project-card {
-            background: white;
+            background: rgba(18,18,18,0.88);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
             margin-bottom: var(--vspace-2);
             position: relative;
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-        }
+        /* убран дерганный hover для стабильности */
 
         .project-card__header {
             position: relative;
             overflow: hidden;
-            height: 280px;
+            height: clamp(220px, 22vw, 320px);
         }
 
         .project-card__image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
-        .project-card:hover .project-card__image {
-            transform: scale(1.05);
-        }
+        /* без масштабирования на hover */
 
-        .project-card__overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(249, 168, 40, 0.9) 0%, rgba(7, 97, 125, 0.9) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .project-card__overlay { display: none; }
 
-        .project-card:hover .project-card__overlay {
-            opacity: 1;
-        }
+        /* overlay отключен */
 
-        .project-card__view-btn {
-            background: white;
-            color: var(--color-2);
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-family: var(--font-2);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            transform: translateY(20px);
-            opacity: 0;
-        }
+        .project-card__view-btn { display: none; }
 
         .project-card:hover .project-card__view-btn {
             transform: translateY(0);
             opacity: 1;
         }
 
-        .project-card__view-btn:hover {
-            background: var(--color-1);
-            color: white;
-        }
+        /* кнопка в overlay отключена */
 
         .project-card__content {
             padding: var(--vspace-1_5);
@@ -165,14 +130,14 @@
             font-family: var(--font-1);
             font-size: var(--text-xl);
             font-weight: 600;
-            color: var(--color-text);
+            color: #ffffff;
             margin-bottom: var(--vspace-0_5);
         }
 
         .project-card__desc {
             font-family: var(--font-2);
             font-size: var(--text-md);
-            color: var(--color-text-light);
+            color: #d3e8d6;
             line-height: 1.6;
             margin-bottom: var(--vspace-1);
         }
@@ -203,26 +168,30 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--color-1);
-            color: white;
+            background: #327b21;
+            color: #ffffff;
             padding: 16px 32px;
             border-radius: 8px;
             font-family: var(--font-2);
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(249, 168, 40, 0.3);
+            box-shadow: 0 4px 16px rgba(50, 123, 33, 0.3);
         }
 
         .back-to-home__btn:hover {
-            background: var(--color-1-dark);
+            background: #28661a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(249, 168, 40, 0.4);
+            box-shadow: 0 8px 24px rgba(50, 123, 33, 0.4);
         }
 
+        .back-to-home__btn[style*="background: var(--color-2)"] {
+            background: #327b21 !important;
+            color: #ffffff !important;
+        }
         .back-to-home__btn[style*="background: var(--color-2)"]:hover {
-            background: var(--color-2-dark) !important;
-            box-shadow: 0 8px 24px rgba(7, 97, 125, 0.4);
+            background: #28661a !important;
+            box-shadow: 0 8px 24px rgba(50, 123, 33, 0.4) !important;
         }
 
         .back-to-home__icon {

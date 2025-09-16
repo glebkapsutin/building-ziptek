@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
     body {
-        background: linear-gradient(120deg, #181818 0%, #23243a 100%);
+        background: linear-gradient(120deg, #121212 0%, #1c1c1c 100%);
     }
     .service-detail-bg {
         position: fixed;
         inset: 0;
         z-index: 0;
-        background: linear-gradient(120deg, rgba(255,193,7,0.18) 0%, rgba(40,30,10,0.18) 100%);
+        background: linear-gradient(120deg, rgba(37,33,34,0.50) 0%, rgba(50,123,33,0.12) 100%);
         backdrop-filter: blur(14px);
         opacity: 0.97;
         pointer-events: none;
@@ -24,9 +24,9 @@
         z-index: 2;
         max-width: 700px;
         margin: 3rem auto 2rem auto;
-        background: rgba(30,24,18,0.96);
+        background: rgba(18,18,18,0.96);
         border-radius: 22px;
-        box-shadow: 0 8px 48px 0 rgba(255,193,7,0.10);
+        box-shadow: 0 8px 48px 0 rgba(50,123,33,0.20);
         padding: 2.5rem 2.5rem 2rem 2.5rem;
         animation: fadeInUp 0.8s cubic-bezier(.4,1.6,.6,1);
         overflow: hidden;
@@ -39,29 +39,29 @@
         font-family: var(--font-2);
         font-size: 2.2rem;
         font-weight: 700;
-        color: #ffd600;
+        color: #ffffff;
         margin-bottom: 0.7rem;
         letter-spacing: 0.01em;
         position: relative;
-        text-shadow: 0 2px 8px rgba(255,193,7,0.10);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
     .service-detail-divider {
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+        background: linear-gradient(90deg, #252122 0%, #327b21 100%);
         border-radius: 2px;
         margin-bottom: 2rem;
         opacity: 0.85;
         transition: width 0.5s cubic-bezier(.4,1.6,.6,1);
-        box-shadow: 0 1px 8px 0 rgba(255,193,7,0.18);
+        box-shadow: 0 1px 8px 0 rgba(50,123,33,0.18);
     }
     .service-detail-card:hover .service-detail-divider {
         width: 100%;
         opacity: 1;
-        background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+        background: linear-gradient(90deg, #252122 0%, #327b21 100%);
     }
     .service-detail-desc {
-        color: #ffe082;
+        color: #e8f5e9;
         font-size: 1.18em;
         margin-bottom: 2.2rem;
         line-height: 1.7;
@@ -71,7 +71,7 @@
         padding-left: 1.2em;
     }
     .service-detail-list li {
-        color: #fffde7;
+        color: #f5fff5;
         margin-bottom: 0.7em;
         position: relative;
         padding-left: 1.2em;
@@ -82,8 +82,8 @@
         left: 0; top: 0.7em;
         width: 8px; height: 8px;
         border-radius: 50%;
-        background: #ffd600;
-        box-shadow: 0 0 0 2px #ffb300;
+        background: #327b21;
+        box-shadow: 0 0 0 2px #234f17;
     }
     .service-detail-back {
         display: inline-block;
@@ -91,19 +91,19 @@
         border-radius: 8px;
         font-size: 1.1em;
         padding: 0.7em 2.2em;
-        border: 2px solid #fffde7;
-        color: #fffde7;
-        background: transparent;
+        border: 2px solid #327b21;
+        color: #ffffff;
+        background: #327b21;
         transition: background 0.2s, color 0.2s, border-color 0.2s;
         text-decoration: none;
         font-weight: 600;
         letter-spacing: 0.08em;
-        box-shadow: 0 2px 12px 0 rgba(255,193,7,0.08);
+        box-shadow: 0 2px 12px 0 rgba(50,123,33,0.18);
     }
     .service-detail-back:hover {
-        background: #ffd60022;
-        color: #181818;
-        border-color: #ffd600;
+        background: #28661a;
+        color: #ffffff;
+        border-color: #28661a;
     }
     @media (max-width: 900px) {
         .service-detail-card {

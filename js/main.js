@@ -651,5 +651,16 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(function() {
         updateYear();
     }, 24 * 60 * 60 * 1000); // Проверка раз в день
+
+    // Горизонтальная навигация по домашнему портфолио
+    var scroller = document.getElementById('homePortfolio');
+    if (scroller) {
+        var leftBtn = document.querySelector('.home-portfolio-arrow.left');
+        var rightBtn = document.querySelector('.home-portfolio-arrow.right');
+        var step = Math.max(320, Math.round(scroller.clientWidth * 0.9));
+        function scrollBy(dx) { scroller.scrollBy({ left: dx, behavior: 'smooth' }); }
+        if (leftBtn) leftBtn.addEventListener('click', function(){ scrollBy(-step); });
+        if (rightBtn) rightBtn.addEventListener('click', function(){ scrollBy(step); });
+    }
 });
 
